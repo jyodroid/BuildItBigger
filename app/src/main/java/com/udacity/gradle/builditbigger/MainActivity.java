@@ -1,12 +1,18 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.JokesTeller;
+import com.example.jyodroid.jokeshower.JokeShowerActivity;
+
+import java.util.Random;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -40,7 +46,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+
+        Random randomJokeNumber = new Random();
+
+        JokesTeller jokesTeller = new JokesTeller();
+
+        int jokeNumber = randomJokeNumber.nextInt(jokesTeller.getJokesSize());
+        new BackEndConnectTask().execute(new Pair<Context, Integer>(this, jokeNumber));
     }
 
 

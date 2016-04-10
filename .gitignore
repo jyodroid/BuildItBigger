@@ -7,5 +7,9 @@
 /.
 /captures
 .idea/
-FinalProject.iml
+BuildItBigger.iml
 backend/build/*
+app/app.iml
+backend/backend.iml
+jokeshower/jokeshower.iml
+jokessource/jokessource.iml

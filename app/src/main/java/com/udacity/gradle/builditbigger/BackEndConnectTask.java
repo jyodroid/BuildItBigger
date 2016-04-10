@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Pair;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.jyodroid.jokeshower.JokeShowerActivity;
 import com.example.jyodroid.myapplication.backend.myApi.MyApi;
@@ -20,6 +22,23 @@ import java.io.IOException;
 public class BackEndConnectTask extends AsyncTask<Pair<Context, Integer>, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
+    private ProgressBar mProgressBar;
+
+    public BackEndConnectTask(ProgressBar progressBar) {
+        mProgressBar = progressBar;
+    }
+
+    //for testing
+    public BackEndConnectTask() {
+    }
+
+    @Override
+    protected void onPreExecute() {
+        if (mProgressBar != null) {
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+        super.onPreExecute();
+    }
 
     @Override
     protected String doInBackground(Pair<Context, Integer>... params) {
@@ -56,6 +75,9 @@ public class BackEndConnectTask extends AsyncTask<Pair<Context, Integer>, Void, 
         Intent intent = new Intent(context, JokeShowerActivity.class);
         intent.putExtra(JokeShowerActivity.JOKE_EXTRA, result);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (mProgressBar != null) {
+            mProgressBar.setVisibility(View.INVISIBLE);
+        }
         context.startActivity(intent);
     }
 }

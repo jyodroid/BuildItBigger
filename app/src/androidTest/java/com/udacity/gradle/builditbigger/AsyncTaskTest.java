@@ -28,7 +28,7 @@ public class AsyncTaskTest extends AndroidTestCase {
         try {
             joke =
                     new BackEndConnectTask()
-                            .execute(new Pair<Context, Integer>(getContext(), jokeNumber)).get();
+                            .execute(new Pair<>(getContext(), jokeNumber)).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

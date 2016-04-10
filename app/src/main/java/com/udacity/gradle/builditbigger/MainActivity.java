@@ -8,6 +8,7 @@ import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.JokesTeller;
 import com.example.jyodroid.jokeshower.JokeShowerActivity;
@@ -52,7 +53,9 @@ public class MainActivity extends ActionBarActivity {
         JokesTeller jokesTeller = new JokesTeller();
 
         int jokeNumber = randomJokeNumber.nextInt(jokesTeller.getJokesSize());
-        new BackEndConnectTask().execute(new Pair<Context, Integer>(this, jokeNumber));
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbar);
+
+        new BackEndConnectTask(progressBar).execute(new Pair<Context, Integer>(this, jokeNumber));
     }
 
 

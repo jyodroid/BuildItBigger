@@ -40,3 +40,5 @@ dependencies {
     freeCompile 'com.google.android.gms:play-services:8.4.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
 }
+
+//connectedCheck.dependsOn(project(':backend').appengineRun)

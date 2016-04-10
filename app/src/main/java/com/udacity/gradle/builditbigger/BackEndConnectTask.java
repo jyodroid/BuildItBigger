@@ -55,6 +55,7 @@ public class BackEndConnectTask extends AsyncTask<Pair<Context, Integer>, Void, 
     protected void onPostExecute(String result) {
         Intent intent = new Intent(context, JokeShowerActivity.class);
         intent.putExtra(JokeShowerActivity.JOKE_EXTRA, result);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 }
